@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 import filmsService from "../services/filmsService";
-import filmDataInterface from "../interfaces/filmDataInterface";
+import FilmDTO from "../interfaces/filmDTO";
 
 const filmsController = {
-  getAllFilms: async (req: Request, res: Response) => {
+  getAllFilms: async (_req: Request, res: Response) => {
     try {
       const films = await filmsService.getAllFilms();
       if (films.length === 0) {
@@ -34,7 +34,37 @@ const filmsController = {
         message: 'Algo deu errado ao buscar o filme.',
       });
     }
+  },
+
+  createFilm: async (req: Request, res: Response) => {
+    const filmData: FilmDTO = req.body;
+    try {
+      const newFilmId = await filmsService.createFilm(filmData);
+      return res.status(201).json({
+        message: 'Filme criado com sucesso.',
+        filmId: newFilmId,
+      });
+    } catch (error) {
+      return res.status(500).json({
+        message: 'Algo deu errado ao criar o filme.',
+      });
+    }
+  },
+
+  deleteFilm: async (req: Request, res: Response) => {
+    const { id } = req.params;
+    try {
+      await filmsService.deleteFilmById(id);
+      return res.status(200).json({
+        message: 'Filme deletado com sucesso.',
+      });
+    } catch (error) {
+      return res.status(500).json({
+        message: 'Algo deu errado ao deletar o filme.',
+      });
+    }
   }
+
 };
 
 export default filmsController;
