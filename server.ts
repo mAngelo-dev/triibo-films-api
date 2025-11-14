@@ -1,6 +1,9 @@
 #! Para executar é necessário utilizar as variaveis de ambientes informadas no README.md
 import express from 'express'
 import cors from 'cors'
+import dotnev from 'dotenv'
+
+dotnev.config({path: __dirname + '/.env'})
 
 const PORT = process.env.PORT || 3000;
 
