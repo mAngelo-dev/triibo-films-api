@@ -1,10 +1,14 @@
+import {db} from "../configs/firebase";
+
 const filmsRepository = {
   getAllFilms: async () => {
-    return [
-      { id: 1, title: 'Inception', director: 'Christopher Nolan' },
-      { id: 2, title: 'The Matrix', director: 'The Wachowskis' },
-      { id: 3, title: 'Interstellar', director: 'Christopher Nolan' }
-    ]
+    const snapshot = await db.collection("films").get();
+    const films = [];
+
+    for (const doc of snapshot.docs) {
+      films.push(doc.data());
+    }
+    return films;
   }
 }
 export default filmsRepository;
