@@ -27,6 +27,10 @@ const filmsRepository = {
   },
   deleteFilmById(id: string) {
     return db.collection("films").doc(id).delete();
+  },
+
+  updateFilmById(id: string, film: Partial<FilmDTO>) {
+    return db.collection("films").doc(id).update(film);
   }
 }
 export default filmsRepository;

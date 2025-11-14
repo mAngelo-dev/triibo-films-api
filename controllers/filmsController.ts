@@ -63,8 +63,22 @@ const filmsController = {
         message: 'Algo deu errado ao deletar o filme.',
       });
     }
-  }
+  },
 
+  updateFilm: async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const filmData: Partial<FilmDTO> = req.body;
+    try {
+      await filmsService.updateFilmById(id, filmData);
+      return res.status(200).json({
+        message: 'Filme atualizado com sucesso.',
+      });
+    } catch (error) {
+      return res.status(500).json({
+        message: 'Algo deu errado ao atualizar o filme.',
+      });
+    }
+  }
 };
 
 export default filmsController;
