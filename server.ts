@@ -1,4 +1,4 @@
-#! Para executar é necessário utilizar as variaveis de ambientes informadas no README.md
+// Para executar é necessário utilizar as variaveis de ambientes informadas no README.md
 import express from 'express'
 import cors from 'cors'
 import dotnev from 'dotenv'
