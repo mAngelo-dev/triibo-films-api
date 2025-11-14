@@ -2,6 +2,7 @@
 import express from 'express'
 import cors from 'cors'
 import dotnev from 'dotenv'
+import filmsRoute from "./routes/filmsRoute";
 
 dotnev.config({path: __dirname + '/.env'})
 
@@ -16,6 +17,8 @@ server.use(cors({
 ))
 
 server.use(express.json());
+
+server.use('/films', filmsRoute);
 
 
 server.listen(PORT, () => {
