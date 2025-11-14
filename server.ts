@@ -1,10 +1,10 @@
 // Para executar é necessário utilizar as variaveis de ambientes informadas no README.md
 import express from 'express'
 import cors from 'cors'
-import dotnev from 'dotenv'
+import dotenv from 'dotenv'
 import filmsRoute from "./routes/filmsRoute";
 
-dotnev.config({path: __dirname + '/.env'})
+dotenv.config({path: __dirname + '/.env'})
 
 const PORT = process.env.PORT || 3000;
 
