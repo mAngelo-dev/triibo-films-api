@@ -29,20 +29,12 @@ const filmsService = {
   },
 
   updateFilmById: async (id: string, film: Partial<FilmDTO>) => {
-    const allowedFields: Array<string> = ['title', 'year', 'description'];
-
-    let sanitizedFilm = {};
-
-    for (const key of Object.keys(film)) {
-      if (allowedFields.includes(key)) {
-        // Avaliar alguma forma de evitar o ts-ignore aqui, por mais que funcione, esta havendo erro com a tipagem.
-        // @ts-ignore
-        sanitizedFilm[key] = film[key];
-      }
-    }
+    const { title, year, description } = film
 
     return filmsRepository.updateFilmById(id, {
-      ...sanitizedFilm,
+      title,
+      year,
+      description,
       updatedAt: Timestamp.now(),
     });
   }
