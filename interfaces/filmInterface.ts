@@ -1,4 +1,4 @@
-export default interface FilmDTO {
+export default interface FilmInterface {
   title: string;
   year: string;
   description: string;

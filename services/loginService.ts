@@ -1,4 +1,4 @@
-import loginDTO from "../interfaces/loginDTO";
+import loginInterface from "../interfaces/loginInterface";
 import loginRepository from "../repositories/loginRepository";
 import passwordUtils from "../utils/passwordUtils";
 import jwt from 'jsonwebtoken';
@@ -6,8 +6,8 @@ import jwt from 'jsonwebtoken';
 const JWT_SECRET = process.env.JWT_SECRET || 'secret'
 
 const loginService = {
-  createUser: async (loginData: loginDTO)=> {
-    const userData: loginDTO = await loginRepository.getUserByEmail(loginData.email) as loginDTO;
+  createUser: async (loginData: loginInterface)=> {
+    const userData: loginInterface = await loginRepository.getUserByEmail(loginData.email) as loginInterface;
     if (!userData.email){
       if (loginData.password.length < 12){
         // Aqui eu poderia ter utilizado alguma válidação mais forte
@@ -23,8 +23,8 @@ const loginService = {
     }
   },
 
-  login: async (loginData: loginDTO) => {
-    const userData: loginDTO = await loginRepository.getUserByEmail(loginData.email) as loginDTO;
+  login: async (loginData: loginInterface) => {
+    const userData: loginInterface = await loginRepository.getUserByEmail(loginData.email) as loginInterface;
     if (!userData || !userData?.email || !userData.password) {
       throw new Error("Credencial inválida");
     }
