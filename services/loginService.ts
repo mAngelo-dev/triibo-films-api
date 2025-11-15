@@ -1,6 +1,6 @@
 import loginDTO from "../interfaces/loginDTO";
 import loginRepository from "../repositories/loginRepository";
-import passwordUtils from "../utils/passwordHashing";
+import passwordUtils from "../utils/passwordUtils";
 import jwt from 'jsonwebtoken';
 import dotenv from "dotenv";
 

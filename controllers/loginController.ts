@@ -7,7 +7,7 @@ const loginController = {
       const {email, password} = req.body;
       if (!email || !password){
         return res.status(400).json({
-          message: "Preencha todos os campos requeridos "
+          message: "Preencha todos os campos requeridos"
         })
       }
       await loginService.createUser({email, password})
@@ -21,6 +21,23 @@ const loginController = {
     }
   },
 
+  login: async (req: Request, res: Response) => {
+    try {
+      const {email, password} = req.body;
+      if (!email || !password){
+        return res.status(400).json({
+          message: "Preencha todos os campos requeridos"
+        })
+      }
+      const token = await loginService.login({email, password})
+
+      return res.status(200).json(token)
+    } catch (error){
+      return res.status(500).json({
+        message: "Alo deu errado ao realizar login"
+      })
+    }
+  }
 };
 
 export default loginController;

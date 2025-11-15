@@ -3,7 +3,7 @@ import loginController from "../controllers/loginController";
 
 const loginRoute = express.Router();
 
-// loginRoute.post("/");
+loginRoute.post("/", loginController.login);
 loginRoute.post("/create", loginController.createUser);
 
 export default loginRoute;
