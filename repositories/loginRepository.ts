@@ -15,12 +15,18 @@ const loginRepository = {
   },
 
   getUserByEmail: async (email: string) => {
-    const docUser = await db.collection("users").where(
+    const snapshot = await db.collection("users").where(
       "email", '==', email
     ).get()
 
-    if (docUser.docs[0]){
-      return docUser.docs[0].data()
+    if (snapshot.docs[0]){
+      const docUser: loginDTO = {
+        id: snapshot.docs[0].id,
+        email: snapshot.docs[0].data().email,
+        password: snapshot.docs[0].data().password
+      }
+
+      return docUser
     } else {
       return {}
     }
