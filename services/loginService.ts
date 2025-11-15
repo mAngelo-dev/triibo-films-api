@@ -2,11 +2,8 @@ import loginDTO from "../interfaces/loginDTO";
 import loginRepository from "../repositories/loginRepository";
 import passwordUtils from "../utils/passwordUtils";
 import jwt from 'jsonwebtoken';
-import dotenv from "dotenv";
 
-dotenv.config({path: __dirname + '/.env'})
-
-const JWT_SECRET = process.env.JWT_SECRET || "supersecret"
+const JWT_SECRET = process.env.JWT_SECRET || 'secret'
 
 const loginService = {
   createUser: async (loginData: loginDTO)=> {
@@ -40,7 +37,7 @@ const loginService = {
       id: userData.id,
       email: userData.email
       },
-      JWT_SECRET,
+      JWT_SECRET as string,
       {
         expiresIn: '1d',
       });

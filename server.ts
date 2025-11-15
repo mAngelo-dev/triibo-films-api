@@ -20,7 +20,7 @@ server.use(cors({
 server.use(express.json());
 
 server.use('/films', filmsRoute);
-server.use('/login', loginRoute)
+server.use('/login', loginRoute);
 
 server.listen(PORT, () => {
   console.log(`Triibo-Films API is running on port: ${PORT}`)
