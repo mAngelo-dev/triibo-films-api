@@ -4,8 +4,8 @@ import passwordUtils from "../utils/passwordHashing";
 
 const loginService = {
   createUser: async (loginData: loginDTO)=> {
-    const userNotExists = await loginRepository.getUserByEmail(loginData.email);
-    if (userNotExists){
+    const userData = await loginRepository.getUserByEmail(loginData.email);
+    if (!userData.email){
       if (loginData.password.length < 12){
         // Aqui eu poderia ter utilizado alguma válidação mais forte
         // mas não acho que seja o intuito do back-end ficar realizando regex até pq consome muito em questão de processamento
@@ -13,7 +13,6 @@ const loginService = {
         throw new Error("Por favor, utilize uma senha mais forte.")
       }
       const hashedPassword = await passwordUtils.passwordHashing(loginData.password)
-
 
       return await loginRepository.createUser({email: loginData.email, password: hashedPassword});
     } else {

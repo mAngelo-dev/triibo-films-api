@@ -19,7 +19,11 @@ const loginRepository = {
       "email", '==', email
     ).get()
 
-    return docUser.empty;
+    if (docUser.docs[0]){
+      return docUser.docs[0].data()
+    } else {
+      return {}
+    }
   }
 }
 
