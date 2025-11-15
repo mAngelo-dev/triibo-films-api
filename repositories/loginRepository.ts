@@ -4,7 +4,7 @@ import {firestore} from "firebase-admin";
 import Timestamp = firestore.Timestamp;
 
 const loginRepository = {
-  async createUser(loginData: loginDTO){
+  createUser: async (loginData: loginDTO) => {
     const docToBeAdded = await db.collection("login").add({
       email: loginData.email,
       password: loginData.password,
@@ -12,7 +12,7 @@ const loginRepository = {
     })
 
     return { id: docToBeAdded.id, email: loginData.email };
-  }
+  },
 }
 
 export default loginRepository;
