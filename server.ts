@@ -3,6 +3,7 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import filmsRoute from "./routes/filmsRoute";
+import loginRoute from "./routes/loginRoute";
 
 dotenv.config({path: __dirname + '/.env'})
 
@@ -19,7 +20,7 @@ server.use(cors({
 server.use(express.json());
 
 server.use('/films', filmsRoute);
-
+server.use('/login', loginRoute)
 
 server.listen(PORT, () => {
   console.log(`Triibo-Films API is running on port: ${PORT}`)
