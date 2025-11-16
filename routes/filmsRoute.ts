@@ -69,7 +69,38 @@ filmsRoute.get("/", filmsController.getAllFilms);
  */
 filmsRoute.get("/:id", filmsController.getFilmById);
 
-
+/**
+ * @openapi
+ * /films:
+ *   post:
+ *     tags:
+ *       - Filmes
+ *     summary: Cria um novo filme
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Film'
+ *           example:
+ *             title: "O insano filme do Miguel"
+ *             year: "2001"
+ *             description: "string"
+ *     responses:
+ *       201:
+ *         description: Filme criado com sucesso.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 filmId:
+ *                   type: string
+ *       500:
+ *         description: Algo deu errado ao criar o filme.
+ */
 filmsRoute.post("/", filmsController.createFilm);
 filmsRoute.delete("/:id", filmsController.deleteFilm);
 filmsRoute.put("/:id", filmsController.updateFilm);
