@@ -29,14 +29,16 @@ const filmsService = {
   },
 
   updateFilmById: async (id: string, film: Partial<FilmInterface>) => {
-    const { title, year, description } = film
+    const { title, year, description } = film;
 
-    return filmsRepository.updateFilmById(id, {
-      title,
-      year,
-      description,
+    const updatedFilm: Partial<FilmInterface> = {
+      ...(title && { title }),
+      ...(year && { year }),
+      ...(description && { description }),
       updatedAt: Timestamp.now(),
-    });
+    };
+
+    return filmsRepository.updateFilmById(id, updatedFilm);
   }
 }
 
