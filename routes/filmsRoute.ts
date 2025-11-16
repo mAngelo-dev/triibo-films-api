@@ -20,7 +20,12 @@ filmsRoute.use(authMiddleware.auth)
  *             schema:
  *               type: array
  *               items:
- *                 $ref: '#/components/schemas/Film'
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: string
+ *                   data:
+ *                     $ref: '#/components/schemas/Film'
  *       404:
  *         description: Nenhum filme encontrado
  */
@@ -48,9 +53,17 @@ filmsRoute.get("/", filmsController.getAllFilms);
  *             schema:
  *               $ref: '#/components/schemas/Film'
  *             example:
- *               title: "Matrix"
- *               year: 1999
- *               description: "Um clássico de ficção científica"
+ *               Title: "Matrix"
+ *               Year: 1999
+ *               Description: "Um clássico de ficção científica"
+ *               createdAt: {
+ *                 _seconds: 0,
+ *                 _nanoseconds: 0,
+ *               }
+ *               updatedAt: {
+ *                 _seconds: 0,
+ *                 _nanoseconds: 0,
+ *               }
  *       404:
  *         description: Filme não encontrado
  */
