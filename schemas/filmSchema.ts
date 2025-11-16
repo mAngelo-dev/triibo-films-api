@@ -1,15 +1,15 @@
 const filmSchema = {
   type: "object",
   properties: {
-    Title: {
+    title: {
       type: "string",
       description: "Título do Filme"
     },
-    Year: {
+    year: {
       type: "string",
       description: "Ano de Lançamento do Filme"
     },
-    Description: {
+    description: {
       type: "string",
       description: "Descrição breve do Filme"
     },

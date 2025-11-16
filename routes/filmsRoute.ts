@@ -53,9 +53,9 @@ filmsRoute.get("/", filmsController.getAllFilms);
  *             schema:
  *               $ref: '#/components/schemas/Film'
  *             example:
- *               Title: "Matrix"
- *               Year: 1999
- *               Description: "Um clássico de ficção científica"
+ *               title: "Matrix"
+ *               year: 1999
+ *               description: "Um clássico de ficção científica"
  *               createdAt: {
  *                 _seconds: 0,
  *                 _nanoseconds: 0,
