@@ -3,8 +3,6 @@ import loginRepository from "../repositories/loginRepository";
 import passwordUtils from "../utils/passwordUtils";
 import jwt from 'jsonwebtoken';
 
-const JWT_SECRET = process.env.JWT_SECRET || 'secret'
-
 const loginService = {
   createUser: async (loginData: loginInterface)=> {
     const userData: loginInterface = await loginRepository.getUserByEmail(loginData.email) as loginInterface;
@@ -37,7 +35,7 @@ const loginService = {
       id: userData.id,
       email: userData.email
       },
-      JWT_SECRET as string,
+      process.env.JWT_SECRET!,
       {
         expiresIn: '1d',
       });

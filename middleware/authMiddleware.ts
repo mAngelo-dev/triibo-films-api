@@ -1,8 +1,6 @@
 import {Request, Response, NextFunction} from "express";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "supersecret"
-
 const authMiddleware = {
   auth: async ( req: Request, res: Response, next: NextFunction) => {
     const authorization = req.headers.authorization as string;
@@ -21,7 +19,7 @@ const authMiddleware = {
     }
 
     const token = authHeader[1]
-    jwt.verify(token, JWT_SECRET as string, (error) => {
+    jwt.verify(token, process.env.JWT_SECRET!, (error) => {
       if (error) {
         return res.status(403).json({message: "Token inválido"});
       }

@@ -9,8 +9,6 @@ import swaggerUi from "swagger-ui-express";
 
 dotenv.config({path: __dirname + '/.env'})
 
-const PORT = process.env.PORT || 3000;
-
 const server = express()
 
 server.use(cors({
@@ -26,6 +24,6 @@ server.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 server.use('/films', filmsRoute);
 server.use('/login', loginRoute);
 
-server.listen(PORT, () => {
-  console.log(`Triibo-Films API is running on port: ${PORT}`)
+server.listen(process.env.PORT!, () => {
+  console.log(`Triibo-Films API is running on port: ${process.env.PORT}`)
 })
