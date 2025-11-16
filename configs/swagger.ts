@@ -1,6 +1,8 @@
 import swaggerJsdoc from "swagger-jsdoc";
 import path from "path";
 import filmSchema from "../schemas/filmSchema";
+import createdFilmSchema from "../schemas/createdFilmSchema.";
+import tokenSchema from "../schemas/tokenSchema";
 
 const options = {
   definition: {
@@ -12,7 +14,9 @@ const options = {
     },
     components:{
       schemas: {
-        Film: filmSchema
+        Film: filmSchema,
+        CreatedFilm: createdFilmSchema,
+        Token: tokenSchema
       }
     }
   },

@@ -5,7 +5,6 @@ import authMiddleware from "../middleware/authMiddleware";
 const filmsRoute = express.Router();
 
 filmsRoute.use(authMiddleware.auth)
-
 /**
  * @openapi
  * /films:
@@ -16,9 +15,17 @@ filmsRoute.use(authMiddleware.auth)
  *     responses:
  *       200:
  *         description: Lista de filmes retornada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Film'
  *       404:
  *         description: Nenhum filme encontrado
  */
+filmsRoute.get("/", filmsController.getAllFilms);
+
 filmsRoute.get("/", filmsController.getAllFilms);
 /**
  * @openapi
@@ -48,6 +55,8 @@ filmsRoute.get("/", filmsController.getAllFilms);
  *         description: Filme não encontrado
  */
 filmsRoute.get("/:id", filmsController.getFilmById);
+
+
 filmsRoute.post("/", filmsController.createFilm);
 filmsRoute.delete("/:id", filmsController.deleteFilm);
 filmsRoute.put("/:id", filmsController.updateFilm);
