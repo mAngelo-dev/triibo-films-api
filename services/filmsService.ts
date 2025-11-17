@@ -3,6 +3,7 @@ import FilmInterface from "../interfaces/filmInterface";
 import {firestore} from "firebase-admin";
 import Timestamp = firestore.Timestamp;
 import filmDataInterface from "../interfaces/filmDataInterface";
+import omdbService from "./omdbService";
 
 const filmsService = {
   getAllFilms: async (): Promise<filmDataInterface[]> => {
@@ -20,6 +21,7 @@ const filmsService = {
       description,
       createdAt: Timestamp.now(),
       updatedAt: Timestamp.now(),
+      imdbID: await omdbService.getId(title)
     }
     return await filmsRepository.createFilm(filmToBeCreated);
   },
@@ -31,6 +33,7 @@ const filmsService = {
   updateFilmById: async (id: string, film: Partial<FilmInterface>) => {
     const { title, year, description } = film;
 
+    // Valor truthy seguido de spread
     const updatedFilm: Partial<FilmInterface> = {
       ...(title && { title }),
       ...(year && { year }),

@@ -4,4 +4,5 @@ export default interface FilmInterface {
   description: string;
   createdAt?: FirebaseFirestore.Timestamp;
   updatedAt?: FirebaseFirestore.Timestamp;
+  imdbDetails?: string | object
 }
