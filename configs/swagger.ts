@@ -4,6 +4,8 @@ import filmSchema from "../schemas/filmSchema";
 import createdFilmSchema from "../schemas/createdFilmSchema.";
 import tokenSchema from "../schemas/tokenSchema";
 
+const extension = process.env.NODE_ENV === "production" ? "js" : "ts";
+
 const options = {
   definition: {
     openapi: "3.0.0",
@@ -20,7 +22,7 @@ const options = {
       }
     }
   },
-  apis: [path.join(__dirname, "../routes/*.ts")],
+  apis: [path.join(__dirname, `../routes/*.${extension}`)],
 };
 
 const swaggerSpec = swaggerJsdoc(options);
