@@ -9,6 +9,7 @@ API REST para gerenciamento de filmes com integração à OMDB API para detalhes
 - Node.js
 - Express.js
 - TypeScript
+- Swagger
 - Firebase Admin SDK
 - Axios
 - JWT Authentication
@@ -79,4 +80,21 @@ Para rodar o projeto em modo dev utilize:
 ```sh
 npm run dev
 ```
+
+### Modo PROD:
+Para rodar em modo produção, gere a build do projeto:
+```sh
+npm run build
+```
+e em seguida:
+```shell
+npm start
+```
+
+A API conta com SWAGGER para criar uma rota a qual você conecta pelo navegador, utilize:
+```http://localhost:PORT/docs/```, onde PORT é a variável definida no arquivo ```.env```.
+
+Nessa rota, é possível visualizar o retorno da API e seus exemplos.
+
+Para utilizar as rotas ```http://localhost:PORT/films``` é necessário que seja passado o token que é resgatado pela rota de ```http://localhost:PORT/login```.
 
