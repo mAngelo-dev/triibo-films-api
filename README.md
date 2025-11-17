@@ -91,6 +91,10 @@ e em seguida:
 npm start
 ```
 
+---
+
+## Como funciona?
+
 A API conta com SWAGGER para criar uma rota a qual você conecta pelo navegador, utilize:
 ```http://localhost:PORT/docs/```, onde PORT é a variável definida no arquivo ```.env```.
 
@@ -98,3 +102,4 @@ Nessa rota, é possível visualizar o retorno da API e seus exemplos.
 
 Para utilizar as rotas ```http://localhost:PORT/films``` é necessário que seja passado o token que é resgatado pela rota de ```http://localhost:PORT/login```.
 
+![Foto do Swagger](swaggerexemple.png)
