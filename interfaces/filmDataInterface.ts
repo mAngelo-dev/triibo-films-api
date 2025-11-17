@@ -1,6 +1,6 @@
-import FilmInterface from "./filmInterface";
+import filmInterface from "./filmInterface";
 
 export default interface filmDataInterface {
   id: string;
-  data: FilmInterface;
+  data: filmInterface;
 }

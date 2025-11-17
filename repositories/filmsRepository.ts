@@ -1,5 +1,5 @@
 import {db} from "../configs/firebase";
-import FilmInterface from "../interfaces/filmInterface";
+import filmInterface from "../interfaces/filmInterface";
 import filmDataInterface from "../interfaces/filmDataInterface";
 
 const filmsRepository = {
@@ -8,7 +8,7 @@ const filmsRepository = {
     const films: Array<filmDataInterface> = [];
 
     for (const doc of snapshot.docs) {
-      films.push({id: doc.id, data: doc.data() as FilmInterface});
+      films.push({id: doc.id, data: doc.data() as filmInterface});
     }
     return films;
   },
@@ -16,12 +16,12 @@ const filmsRepository = {
   getFilmById: async (id: string) => {
     const doc = await db.collection("films").doc(id).get();
     if (doc.exists){
-      return doc.data() as FilmInterface;
+      return doc.data() as filmInterface;
     }
     return null;
   },
 
-  createFilm: async (film: FilmInterface) => {
+  createFilm: async (film: filmInterface) => {
     const docRef = await db.collection("films").add(film);
     return docRef.id;
   },
@@ -29,7 +29,7 @@ const filmsRepository = {
     return db.collection("films").doc(id).delete();
   },
 
-  updateFilmById(id: string, film: Partial<FilmInterface>) {
+  updateFilmById(id: string, film: Partial<filmInterface>) {
     return db.collection("films").doc(id).update(film);
   }
 }

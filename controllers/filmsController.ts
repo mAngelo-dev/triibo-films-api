@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import filmsService from "../services/filmsService";
-import FilmInterface from "../interfaces/filmInterface";
+import filmInterface from "../interfaces/filmInterface";
 
 const filmsController = {
   getAllFilms: async (_req: Request, res: Response) => {
@@ -37,7 +37,7 @@ const filmsController = {
   },
 
   createFilm: async (req: Request, res: Response) => {
-    const filmData: FilmInterface = req.body;
+    const filmData: filmInterface = req.body;
     try {
       const newFilmId = await filmsService.createFilm(filmData);
       return res.status(201).json({
@@ -67,7 +67,7 @@ const filmsController = {
 
   updateFilm: async (req: Request, res: Response) => {
     const { id } = req.params;
-    const filmData: Partial<FilmInterface> = req.body;
+    const filmData: Partial<filmInterface> = req.body;
     try {
       await filmsService.updateFilmById(id, filmData);
       return res.status(200).json({

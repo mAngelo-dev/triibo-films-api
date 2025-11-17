@@ -1,7 +1,7 @@
-import omdbFilmsInterface from "./omdbFilmsInterface";
+import omdbFilmInterface from "./omdbFilmInterface";
 
 export default interface omdbSucessfulSearchInterface {
-  Search: Array<omdbFilmsInterface>,
+  Search: Array<omdbFilmInterface>,
   totalResults: string,
   Response: "True"
 }

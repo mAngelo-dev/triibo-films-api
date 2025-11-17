@@ -1,8 +1,8 @@
-export default interface FilmInterface {
+export default interface filmInterface {
   title: string;
   year: string;
   description: string;
   createdAt?: FirebaseFirestore.Timestamp;
   updatedAt?: FirebaseFirestore.Timestamp;
-  imdbDetails?: string | object
+  imdbID: string | null
 }
