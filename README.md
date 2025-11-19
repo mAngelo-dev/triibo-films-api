@@ -14,7 +14,6 @@ API REST para gerenciamento de filmes com integração à OMDB API para detalhes
 - Axios
 - JWT Authentication
 - Firestore Database
-- Nodemon (para desenvolvimento)
 
 ---
 
@@ -41,25 +40,32 @@ para o funcionamento do projeto ```.env``` e ``firebaseKey.json``, na raíz do p
 
 Caso seja necessário, abra o console do firebase em: https://console.firebase.google.com/
 
-Se ainda não tiver um Projeto e/ou Firestore Database configurado, configure e em seguida gere suas senhas clicando nas configurações e adicionando um novo aplicativo WEB.
+Abra a configuração e vá em conta de serviço: 
+![Foto do painel](painelconfig.png)
 
-Irá ser gerado algo como:
+E em seguida clique em:
+
+![Foto download da chave](downloadkey.png)
+
+Irá ser solicitado um download de um JSON com informações parecidas com esse exemplo:
 ```
-import { initializeApp } from "firebase/app";
+{
+  "type": "service_account",
+  "project_id": "id do projeto",
+  "private_key_id": "token",
+  "private_key": "PRIVATE KEY",
+  "client_email": "emaildeservico.iam.gserviceaccount.com",
+  "client_id": "clientid",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "....servico.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
 
-const firebaseConfig = {
-  apiKey: "token",
-  authDomain: "exemplo.firebaseapp.com",
-  projectId: "exemplo-e072f",
-  storageBucket: "exemplo.firebasestorage.app",
-  messagingSenderId: "1",
-  appId: "1"
-};
-
-const app = initializeApp(firebaseConfig);
 ```
 
-No entanto, utilize o arquivo de exemplo e coloque os valores de ``firebaseConfig`` dentro deles.
+No entanto, utilize o arquivo de exemplo e coloque os valores de ``firebaseConfig`` dentro deles. Em seguida, delete a palavra ``.example`` do nome do arquivo e deixe somente como: ``firebaseKey.json``
 
 
 ---
@@ -101,6 +107,17 @@ A API conta com SWAGGER para criar uma rota a qual você conecta pelo navegador,
 
 Nessa rota, é possível visualizar o retorno da API e seus exemplos.
 
+Para criar o login, utilize a rota: ``http://localhost:PORT/login/create``, no corpo da requisição passe um JSON com as chaves ``email`` e ``password``:
+
+``
+{
+    "email": "email@gmail.com",
+    "password": "123456789123"
+}``
+
+**Observação: A senha precisa ser maior (ou igual) à 12 caracteres.**
+
 Para utilizar as rotas ```http://localhost:PORT/films``` é necessário que seja passado o token que é resgatado pela rota de ```http://localhost:PORT/login```.
+O token por padrão tem vence em 1 dia e é possível resgatar um novo realizando um novo login.
 
 ![Foto do Swagger](swaggerexemple.png)
