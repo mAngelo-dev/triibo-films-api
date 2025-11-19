@@ -119,9 +119,9 @@ Para criar o login, utilize a rota: ``http://localhost:PORT/login/create``, no c
 
 Para o login, utilize a rota ``http://localhost:PORT/login``, no corpo da requisição passe um JSON com as chaves ``email`` e ``password`` que sejam válidos.
 
-O token deve ser enviado pelo cabeçalho da requisição como ``Authorization: Bearer *token*``
-
 Para utilizar as rotas ```http://localhost:PORT/films``` é necessário que seja passado o token que é resgatado pela rota de ```http://localhost:PORT/login```.
 O token por padrão tem vence em 1 dia e é possível resgatar um novo realizando um novo login.
+
+O token deve ser enviado pelo cabeçalho da requisição como ``Authorization: Bearer *token*``
 
 ![Foto do Swagger](swaggerexemple.png)
