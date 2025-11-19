@@ -64,6 +64,9 @@ filmsRoute.get("/", filmsController.getAllFilms);
  *                 _seconds: 0,
  *                 _nanoseconds: 0,
  *               }
+ *               details: {
+ *
+ *               }
  *       404:
  *         description: Filme não encontrado
  */

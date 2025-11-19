@@ -13,6 +13,10 @@ const filmSchema = {
       type: "string",
       description: "Descrição breve do Filme"
     },
+    imdbID: {
+      type: "string",
+      description: "ID do omdbApi"
+    },
     createdAt: {
       type: "object",
       properties: {
