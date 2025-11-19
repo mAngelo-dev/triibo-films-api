@@ -38,6 +38,10 @@ npm -v
 No projeto foi deixado dois arquivos de configuração do projeto, eles se fazem necessários
 para o funcionamento do projeto ```.env``` e ``firebaseKey.json``, na raíz do projeto você pode verificar exemplos de chaves necessárias. (``.env.example`` e ```firebaseKey.example.json```)
 
+Utilize o ``.env.exemple`` para colocar as suas váriaveis de ambiente e em seguida renomeie o arquivo para ``.env``.
+
+Siga com as instruções abaixo para configurar o Firestore/Firebase.
+
 Caso seja necessário, abra o console do firebase em: https://console.firebase.google.com/
 
 Abra a configuração e vá em conta de serviço: 
